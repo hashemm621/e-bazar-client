@@ -1,5 +1,7 @@
 // tailwind.config.mjs
 
+import daisyui from 'daisyui';
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
