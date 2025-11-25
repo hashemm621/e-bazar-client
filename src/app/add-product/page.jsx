@@ -1,6 +1,9 @@
 "use client";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 function Page() {
   const {
@@ -8,9 +11,35 @@ function Page() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const router = useRouter();
 
   const handleProduct = data => {
     console.log(data);
+    Swal.fire({
+      title: "Are you agree",
+      text: "Please, Confirm for post Product!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Post",
+    }).then(result => {
+      if (result.isConfirmed) {
+        axios.post("http://localhost:5000/products", data).then(res => {
+          console.log("after saving data", res.data);
+
+          if (res.data.insertedId) {
+            router.push("/manageProducts");
+
+            Swal.fire({
+              title: "Posted!",
+              text: "Your product has been Posted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
   return (
     <div className="max-w-3xl mx-auto p-6 bg-base-100 rounded-xl shadow-lg border border-base-200">
@@ -97,8 +126,6 @@ function Page() {
               className="input input-bordered w-full"
             />
           </div>
-
-         
         </div>
 
         {/* Priority */}
