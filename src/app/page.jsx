@@ -3,7 +3,6 @@ import Banner from './components/Banner';
 import MemberShip from './components/MemberShip';
 import FeaturedOwner from './components/FeaturedOwner';
 import AboutUs from './components/AboutUs';
-import Footer from './components/Footer';
 
 function page(props) {
   return (
@@ -12,7 +11,7 @@ function page(props) {
       <MemberShip/>
       <FeaturedOwner/>
       <AboutUs/>
-      <Footer/>
+      
     </div>
   );
 }
