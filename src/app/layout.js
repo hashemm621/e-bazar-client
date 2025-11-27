@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Auth0ProviderWrapper from "./components/Auth0ProviderWrapper";
 
+
+
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
