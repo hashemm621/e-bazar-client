@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Bazar
 
-## Getting Started
+## Project Description
 
-First, run the development server:
+E-Bazar is a simple e-commerce backend server built with **Express.js** and **MongoDB**. It provides RESTful API endpoints for managing products, allowing users to create, read, update, and delete product entries. The server is designed to be easily deployable on platforms like **Vercel**.
+
+---
+
+## Setup & Installation
+
+1. **Clone the repository**
+
+```bash
+git clone <your-repo-url>
+cd e-bazar-server
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Environment Variables**
+   Create a `.env.local` file in the root folder and add:
+
+```env
+DB_NAME=<your-mongodb-username>
+DB_PASS=<your-mongodb-password>
+PORT=5000
+```
+
+4. **Start the server**
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node index.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Server will run on `http://localhost:5000`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Routes Summary
 
-## Learn More
+| Method | Endpoint        | Description                                | Request Body                 |
+| ------ | --------------- | ------------------------------------------ | ---------------------------- |
+| GET    | `/`             | Test route; returns welcome message        | None                         |
+| GET    | `/products`     | Get all products (optional query by email) | None                         |
+| GET    | `/products/:id` | Get single product by ID                   | None                         |
+| POST   | `/products`     | Create a new product                       | JSON: `{name, price, email}` |
+| PUT    | `/products/:id` | Update a product by ID                     | JSON: `{field1, field2}`     |
+| DELETE | `/products/:id` | Delete a product by ID                     | None                         |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Set up environment variables in **Vercel Dashboard**.
+* Deploy using:
 
-## Deploy on Vercel
+```bash
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Make sure the MongoDB connection URI is correctly configured via environment variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Notes
+
+* Keep MongoDB client connected for the entire server lifecycle to avoid 500 errors.
+* Use CORS middleware for cross-origin requests.
+* Designed for backend API usage; frontend can connect via fetch or axios.
