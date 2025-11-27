@@ -19,7 +19,9 @@ export default function ProductPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(
+      `https://e-bazar-server-3llgah4p5-md-hashems-projects.vercel.app/products/${id}`
+    )
       .then(res => res.json())
       .then(data => setProduct(data))
       .catch(err => console.error(err));

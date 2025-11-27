@@ -3,9 +3,12 @@ import Link from "next/link";
 import React from "react";
 
 const productsPromise = async () => {
-  const res = await fetch("http://localhost:5000/products", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    "https://e-bazar-server-3llgah4p5-md-hashems-projects.vercel.app/products",
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Auth0ProviderWrapper from "./components/Auth0ProviderWrapper";
 
 const roboto = Roboto({
   weight: "400",
@@ -17,10 +18,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme='light'>
       <body className={roboto.className}>
-        <div className="sticky top-0 z-50">
+        
+        <Auth0ProviderWrapper>
+          <div className="sticky top-0 z-50">
           <Navbar/>
         </div>
-        {children}
+          {children}
+        </Auth0ProviderWrapper>
 
         <Footer/>
         </body>

@@ -21,7 +21,7 @@ const DeleteButton = ({ productId }) => {
       if (result.isConfirmed) {
         try {
           const res = await fetch(
-            `http://localhost:5000/products/${productId}`,
+            `https://e-bazar-server-3llgah4p5-md-hashems-projects.vercel.app/products/${productId}`,
             {
               method: "DELETE",
             }
